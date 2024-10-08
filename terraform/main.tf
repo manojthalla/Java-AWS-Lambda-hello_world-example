@@ -38,6 +38,23 @@ resource "aws_lambda_function" "hello_world" {
   source_code_hash = filebase64sha256("target/com.mthalla.hello.world.lambda-1.0-SNAPSHOT.jar")  # Hash to force updates on change
 }
 
+
+resource "null_resource" "invoke_lambda" {
+  depends_on = [aws_lambda_function.hello_world]  # Ensure this runs after Lambda is created
+
+  provisioner "local-exec" {
+    command = <<EOT
+      aws lambda invoke \
+        --function-name ${aws_lambda_function.hello_world.function_name} \
+        --payload '{}' \
+        output.json
+      echo "Lambda invocation response:"
+      cat output.json
+    EOT
+  }
+}
+
+
 output "lambda_function_arn" {
   value = aws_lambda_function.hello_world.arn
 }
