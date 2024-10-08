@@ -1,4 +1,4 @@
-package com.madadipouya.hello.world.lambda.models;
+package com.mthalla.hello.world.lambda.models;
 
 public final class Request {
 

@@ -1,9 +1,9 @@
-package com.madadipouya.hello.world.lambda;
+package com.mthalla.hello.world.lambda;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.madadipouya.hello.world.lambda.models.Request;
-import com.madadipouya.hello.world.lambda.models.Response;
+import com.mthalla.hello.world.lambda.models.Request;
+import com.mthalla.hello.world.lambda.models.Response;
 
 public class MainFunction implements RequestHandler<Request, Response> {
 
