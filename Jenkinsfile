@@ -21,14 +21,20 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 // Initialize Terraform using bat (batch commands)
-                bat 'terraform init'
+                bat '''
+                cd terraform
+                terraform init
+                '''
             }
         }
 
         stage('Terraform Plan') {
             steps {
                 // Run Terraform plan to see the changes
-                bat 'terraform plan'
+                bat '''
+                cd terraform
+                terraform plan
+                '''
             }
         }
 
@@ -36,15 +42,6 @@ pipeline {
             steps {
                 // Apply the Terraform configuration to deploy the Lambda function
                 bat 'terraform apply -auto-approve'
-            }
-        }
-
-        stage('Invoke Lambda') {
-            steps {
-                // Invoke the Lambda function as part of the pipeline
-                echo 'Invoking Lambda function...'
-                bat 'aws lambda invoke --function-name HelloWorldFunction --payload "{}" output.json'
-                bat 'type output.json'
             }
         }
     }
