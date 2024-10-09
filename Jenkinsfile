@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from your Git repository
-                git branch: 'main', url: 'https://github.com/manojthalla/Java-AWS-Lambda-hello_world-example.git'
+                git branch: 'main', credentialsId:'Github_Token', url: 'https://github.com/manojthalla/Java-AWS-Lambda-hello_world-example.git'
             }
         }
 
