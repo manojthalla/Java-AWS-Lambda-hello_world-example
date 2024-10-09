@@ -41,7 +41,10 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 // Apply the Terraform configuration to deploy the Lambda function
-                bat 'terraform apply -auto-approve'
+                bat '''
+                cd terraform
+                terraform apply -auto-approve
+                '''
             }
         }
     }
