@@ -35,7 +35,7 @@ resource "aws_iam_policy_attachment" "lambda_logs" {
 }
 
 resource "aws_lambda_function" "hello_world" {
-  function_name = "HelloWorldFunction"
+  function_name = "Hello-world-Demo"
   role          = aws_iam_role.lambda_exec_role.arn
   handler       = "com.mthalla.hello.world.lambda.MainFunction::handleRequest"
   runtime       = "java11"  # Choose the runtime as per your Java version
